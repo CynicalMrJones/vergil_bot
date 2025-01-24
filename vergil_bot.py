@@ -14,6 +14,7 @@ async def checkuser(userID):
     return userID.voice.self_mute
 
 
+#for voice stuff
 @client.event
 async def on_voice_state_update(member, before, after):
     if member.id == names.julianID:
@@ -45,11 +46,12 @@ async def on_voice_state_update(member, before, after):
         print('REGGIE HOW DO YOU JOIN MUTED EVERYTIME')
 
 
+# logon message
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
 
-
+# This is for messages
 @client.event
 async def on_message(message):
     if message.author == client.user:
