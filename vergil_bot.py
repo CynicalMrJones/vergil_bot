@@ -3,6 +3,7 @@
 import discord
 import asyncio
 import names
+import bannedwords 
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -14,7 +15,7 @@ async def checkuser(userID):
     return userID.voice.self_mute
 
 
-#for voice stuff
+# for voice stuff
 @client.event
 async def on_voice_state_update(member, before, after):
     if member.id == names.julianID:
@@ -51,13 +52,22 @@ async def on_voice_state_update(member, before, after):
 async def on_ready():
     print(f'We have logged in as {client.user}')
 
+
+async def checkDictCringe(str):
+    dic = bannedwords.bannedwords
+    for word in dic:
+        if word in str.lower():
+            return True
+    return False
+
+
 # This is for messages
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
-    elif message.content == "fuck":
-        await message.channel.send("you")
+    elif await checkDictCringe(message.content):
+        await message.channel.send("Cringe")
 
 
 client.run(names.token)
