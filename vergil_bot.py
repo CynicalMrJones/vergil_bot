@@ -18,30 +18,31 @@ async def checkuser(userID):
 # for voice stuff
 @client.event
 async def on_voice_state_update(member, before, after):
+
     if member.id == names.julianID:
         if after.self_mute:
             print('Julian is muted')
             await asyncio.sleep(180)
             if await checkuser(member):
-                await member.send('You are muted')
+                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.brandonID:
         if after.self_mute:
             print('Brandon is muted')
             await asyncio.sleep(180)
             if await checkuser(member):
-                await member.send('You are muted')
+                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.jacobID:
         if after.self_mute:
             print('Jacob is muted')
             await asyncio.sleep(180)
             if await checkuser(member):
-                await member.send('You are muted')
+                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.devinID:
         if after.self_mute:
             print('Devin is muted')
-            await asyncio.sleep(180)
+            await asyncio.sleep(5)
             if await checkuser(member):
-                await member.send('You are muted')
+                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
 
     if not before.channel and after.channel and member.id == names.reggieID and before.self_mute:
         print('REGGIE HOW DO YOU JOIN MUTED EVERYTIME')
