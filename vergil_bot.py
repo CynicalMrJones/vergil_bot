@@ -35,7 +35,7 @@ async def on_voice_state_update(member, before, after):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.devinID:
         if after.self_mute:
-            await asyncio.sleep(5)
+            await asyncio.sleep(180)
             if await checkuser(member):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
 
