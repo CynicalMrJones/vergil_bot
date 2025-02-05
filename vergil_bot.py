@@ -10,7 +10,7 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 
-async def checkuser(userID):
+async def checkUserVoice(userID):
     return userID.voice.self_mute
 
 
@@ -21,22 +21,22 @@ async def on_voice_state_update(member, before, after):
     if member.id == names.julianID:
         if after.self_mute:
             await asyncio.sleep(180)
-            if await checkuser(member):
+            if await checkUserVoice(member):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.brandonID:
         if after.self_mute:
             await asyncio.sleep(180)
-            if await checkuser(member):
+            if await checkUserVoice(member):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.jacobID:
         if after.self_mute:
             await asyncio.sleep(180)
-            if await checkuser(member):
+            if await checkUserVoice(member):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.devinID:
         if after.self_mute:
             await asyncio.sleep(180)
-            if await checkuser(member):
+            if await checkUserVoice(member):
                 await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
 
     if not before.channel and after.channel and member.id == names.reggieID and before.self_mute:
