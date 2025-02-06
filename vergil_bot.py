@@ -1,8 +1,8 @@
 
 import discord
 import asyncio
-import names
-import bannedwords 
+from other import names
+from other import bannedwords
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -22,22 +22,22 @@ async def on_voice_state_update(member, before, after):
         if after.self_mute:
             await asyncio.sleep(180)
             if await checkUserVoice(member):
-                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
+                await member.send(file=discord.File('other/vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.brandonID:
         if after.self_mute:
             await asyncio.sleep(180)
             if await checkUserVoice(member):
-                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
+                await member.send(file=discord.File('other/vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.jacobID:
         if after.self_mute:
             await asyncio.sleep(180)
             if await checkUserVoice(member):
-                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
+                await member.send(file=discord.File('other/vergil-vergil-dmc.gif'),content='You are muted')
     if member.id == names.devinID:
         if after.self_mute:
             await asyncio.sleep(180)
             if await checkUserVoice(member):
-                await member.send(file=discord.File('vergil-vergil-dmc.gif'),content='You are muted')
+                await member.send(file=discord.File('other/vergil-vergil-dmc.gif'),content='You are muted')
 
     if not before.channel and after.channel and member.id == names.reggieID and before.self_mute:
         print('REGGIE HOW DO YOU JOIN MUTED EVERYTIME')
