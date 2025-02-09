@@ -10,6 +10,8 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
+mainChat = client.get_channel(147875019861524480)
+chillsesh = client.get_channel(147875019861524482)
 
 
 async def checkUserVoice(userID):
@@ -42,7 +44,7 @@ async def on_voice_state_update(member, before, after):
                 await member.send(file=discord.File('other/vergil-vergil-dmc.gif'), content='You are muted')
 
     if not before.channel and after.channel and member.id == names.reggieID and before.self_mute:
-        print('REGGIE HOW DO YOU JOIN MUTED EVERYTIME')
+        await mainChat.send(content="REGGIE, HOW DO YOU JOIN MUTED EVERY TIME")
 
 
 # logon message
@@ -59,17 +61,8 @@ async def on_ready():
         description="is he?",
         guild=discord.Object(id=147875019861524480)
 )
-async def bitch(interaction):
-    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'))
-
-
-@tree.command(
-        name="the_moment",
-        description="That faithful day",
-        guild=discord.Object(id=147875019861524480)
-)
-async def the_moment(interaction):
-    await interaction.response.send_message(file=discord.File('other/Juicy.jpg'))
+async def summon(interaction):
+    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=5)
 
 
 async def checkDictCringe(str):
