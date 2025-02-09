@@ -62,7 +62,7 @@ async def on_ready():
         guild=discord.Object(id=147875019861524480)
 )
 async def summon(interaction):
-    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=5)
+    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=8)
 
 
 async def checkDictCringe(str):
