@@ -52,7 +52,7 @@ async def on_voice_state_update(member, before, after):
 async def on_ready():
     print(f'We have logged in as {client.user}')
     await tree.sync(guild=discord.Object(id=147875019861524480))
-    print('Done')
+    print('Sync sucessful')
 
 
 # for commands
