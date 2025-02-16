@@ -65,6 +65,15 @@ async def summon(interaction):
     await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=8)
 
 
+@tree.command(
+        name="terry",
+        description="templeOS",
+        guild=discord.Object(id=147875019861524480)
+)
+async def terry(interaction):
+    await interaction.response.send_message(file=discord.File('other/terry.webm'), delete_after=10)
+
+
 async def checkDictCringe(str):
     dic = bannedwords.bannedwords
     for word in dic:
