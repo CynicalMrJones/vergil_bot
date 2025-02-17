@@ -62,7 +62,7 @@ async def on_ready():
         guild=discord.Object(id=147875019861524480)
 )
 async def summon(interaction):
-    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=8)
+    await interaction.response.send_message(file=discord.File('other/vergil-vergil-dmc.gif'), delete_after=10)
 
 
 @tree.command(
@@ -71,7 +71,7 @@ async def summon(interaction):
         guild=discord.Object(id=147875019861524480)
 )
 async def terry(interaction):
-    await interaction.response.send_message(file=discord.File('other/terry.webm'), delete_after=10)
+    await interaction.response.send_message(file=discord.File('other/terry.webm'), delete_after=11)
 
 
 async def checkDictCringe(str):
@@ -88,7 +88,10 @@ async def on_message(message):
     if message.author == client.user:
         return
     elif await checkDictCringe(message.content):
-        await message.channel.send("Cringe")
+        await message.channel.send(
+                file=discord.File('other/Vergil_computer.jpg'),
+                content="Cringe"
+                )
 
 
 client.run(names.token)
