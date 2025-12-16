@@ -7,7 +7,7 @@ RUN pip install discord.py
 RUN pip install discord.py[voice]
 RUN pip install PyNaCl
 RUN apt update
-RUN apt install ffmpeg
+RUN apt install -y ffmpeg
 
 COPY . .
 
