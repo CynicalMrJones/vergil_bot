@@ -94,4 +94,16 @@ async def on_message(message):
                 )
 
 
+@tree.command(
+        name="join",
+        description="This joins a channel",
+        guild=discord.Object(id=147875019861524480)
+)
+async def join(interaction):
+    test = await interaction.channel.connect()
+    test.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg', source='other/vergil_voice.mp3'))
+    await asyncio.sleep(8)
+    await test.disconnect()
+
+
 client.run(names.token)
