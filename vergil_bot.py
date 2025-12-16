@@ -100,9 +100,10 @@ async def on_message(message):
         guild=discord.Object(id=147875019861524480)
 )
 async def join(interaction):
-    test = await interaction.channel.connect()
+    member = interaction.user
+    test = await member.voice.channel.connect()
     test.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg', source='other/vergil_voice.mp3'))
-    await asyncio.sleep(8)
+    await asyncio.sleep(7)
     await test.disconnect()
 
 
