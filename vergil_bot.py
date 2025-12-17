@@ -4,6 +4,7 @@ import asyncio
 from other import names
 from other import bannedwords
 from discord import app_commands
+import random
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -94,16 +95,24 @@ async def on_message(message):
                 )
 
 
+# For Voice Stuff
 @tree.command(
         name="join",
         description="This joins a channel",
         guild=discord.Object(id=147875019861524480)
 )
 async def join(interaction):
+    voice_files = ['other/vergil_voice.mp3', 'other/approaching.mp3',
+                   'other/forsaken.mp3',
+                   'other/motovation.mp3', 'other/motovation2.mp3',
+                   'other/twitter.mp3', 'other/Wesker.wav',
+                   'other/vertical.mp3']
+    timer_times = [7, 7, 55, 2, 7, 4, 6, 6]
+    num = random.randint(0, 7)
     member = interaction.user
     test = await member.voice.channel.connect()
-    test.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg', source='other/vergil_voice.mp3'))
-    await asyncio.sleep(7)
+    test.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg', source=voice_files[num]))
+    await asyncio.sleep(timer_times[num])
     await test.disconnect()
 
 
