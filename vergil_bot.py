@@ -102,18 +102,31 @@ async def on_message(message):
         guild=discord.Object(id=147875019861524480)
 )
 async def join(interaction):
-    voice_files = ['other/vergil_voice.mp3', 'other/approaching.mp3',
-                   'other/forsaken.mp3',
-                   'other/motovation.mp3', 'other/motovation2.mp3',
-                   'other/twitter.mp3', 'other/Wesker.wav',
-                   'other/vertical.mp3']
-    timer_times = [7, 7, 55, 2, 7, 4, 6, 6]
-    num = random.randint(0, 7)
+    voice_files = ['other/vergilclips/vergilclips-01.mp3',
+                   'other/vergilclips/vergilclips-02.mp3',
+                   'other/vergilclips/vergilclips-03.mp3',
+                   'other/vergilclips/vergilclips-04.mp3',
+                   'other/vergilclips/vergilclips-05.mp3',
+                   'other/vergilclips/vergilclips-06.mp3',
+                   'other/vergilclips/vergilclips-07.mp3',
+                   'other/vergilclips/vergilclips-08.mp3',
+                   'other/vergilclips/vergilclips-09.mp3',
+                   'other/vergilclips/vergilclips-10.mp3',
+                   'other/vergilclips/vergilclips-11.mp3',
+                   'other/vergilclips/vergilclips-12.mp3',
+                   'other/vergilclips/vergilclips-13.mp3',
+                   'other/vergilclips/vergilclips-14.mp3',
+                   'other/vergilclips/vergilclips-15.mp3',
+                   'other/vergilclips/vergilclips-16.mp3',
+                   'other/vergilclips/vergilclips-17.mp3',
+                   'other/vergilclips/vergilclips-18.mp3']
+    num = random.randint(0, 17)
     member = interaction.user
-    test = await member.voice.channel.connect()
-    test.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg', source=voice_files[num]))
-    await asyncio.sleep(timer_times[num])
-    await test.disconnect()
+    connection = await member.voice.channel.connect()
+    connection.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg',
+                                           source=voice_files[num]))
+    await asyncio.sleep(3)
+    await connection.disconnect()
 
 
 client.run(names.token)
