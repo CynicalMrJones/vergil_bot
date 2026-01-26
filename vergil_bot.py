@@ -119,13 +119,17 @@ async def join(interaction):
                    'other/vergilclips/vergilclips-15.mp3',
                    'other/vergilclips/vergilclips-16.mp3',
                    'other/vergilclips/vergilclips-17.mp3',
-                   'other/vergilclips/vergilclips-18.mp3']
-    num = random.randint(0, 17)
+                   'other/vergilclips/vergilclips-18.mp3',
+                   'other/vergilclips/vergilBadass.mp3']
+    num = random.randint(0, 18)
     member = interaction.user
+    sleeptime = 3
+    if num == 18:
+        sleeptime = 50
     connection = await member.voice.channel.connect()
     connection.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg',
                                            source=voice_files[num]))
-    await asyncio.sleep(3)
+    await asyncio.sleep(sleeptime)
     await connection.disconnect()
 
 
