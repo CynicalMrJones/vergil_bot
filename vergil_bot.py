@@ -5,18 +5,17 @@ from other import names
 from other import bannedwords
 from discord import app_commands
 import random
-
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
-mainChat = client.get_channel(147875019861524480)
-chillsesh = client.get_channel(147875019861524482)
+mainChat = None 
+chillsesh = None 
 
 
-async def checkUserVoice(userID):
-    return userID.voice.self_mute
+async def checkUserVoice(member):
+    return member.voice and member.voice.self_mute
 
 
 # for voice stuff
@@ -44,14 +43,15 @@ async def on_voice_state_update(member, before, after):
             if await checkUserVoice(member):
                 await member.send(file=discord.File('other/vergil-vergil-dmc.gif'), content='You are muted')
 
-    if not before.channel and after.channel and member.id == names.reggieID and before.self_mute:
-        await mainChat.send(content="REGGIE, HOW DO YOU JOIN MUTED EVERY TIME")
 
 
 # logon message
 @client.event
 async def on_ready():
+    global mainChat, chillsesh
     print(f'We have logged in as {client.user}')
+    mainChat = client.get_channel(147875019861524480)
+    chillsesh = client.get_channel(147875019861524482)
     await tree.sync(guild=discord.Object(id=147875019861524480))
     print('Sync sucessful')
 
@@ -90,8 +90,9 @@ async def on_message(message):
         return
     elif await checkDictCringe(message.content):
         await message.channel.send(
-                file=discord.File('other/Vergil_computer.jpg'),
-                content="Cringe"
+                file=discord.File(
+                    'other/Vergil_computer.jpg'),
+                    content="Cringe"
                 )
 
 
@@ -126,6 +127,10 @@ async def join(interaction):
     sleeptime = 3
     if num == 18:
         sleeptime = 50
+    if not member.voice or not member.voice.channel:
+        await interaction.response.send_message("You aren't in a chat")
+        return
+
     connection = await member.voice.channel.connect()
     connection.play(discord.FFmpegPCMAudio(executable='/usr/bin/ffmpeg',
                                            source=voice_files[num]))
