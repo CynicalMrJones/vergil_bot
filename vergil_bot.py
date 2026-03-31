@@ -13,7 +13,7 @@ tree = app_commands.CommandTree(client)
 mainChat = None 
 chillsesh = None 
 
-
+#Used to check if user is in voice
 async def checkUserVoice(member):
     return member.voice and member.voice.self_mute
 
